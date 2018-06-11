@@ -13,7 +13,7 @@ class Post < ActiveRecord::Base
     def is_valid?
       if self.title != nil && ( !self.title.include?("Top") && (!self.title =~ (/\d/)) == nil) && check_blacklist(self.title)
         # binding.pry
-          return true
+          true
       else
         # binding.pry
         false
