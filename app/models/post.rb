@@ -12,22 +12,19 @@ class Post < ActiveRecord::Base
 
     def is_valid?
       if self.title != nil && ( !self.title.include?("Top") && (!self.title =~ (/\d/)) == nil) && check_blacklist(self.title)
-        # binding.pry
           true
       else
-        # binding.pry
         false
       end
     end
 
     def check_blacklist(passed_phrase)
       passed_array = passed_phrase.split(" ")
-      # binding.pry
       if (CLICKBAIT_BLACKLIST & passed_array).any?
-        # binding.pry
+
         return false
       else
-        # binding.pry
+
         return true
       end
 
